@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Détails de l'auteur</title>
+</head>
+<body>
+    <h1>Détails de l'auteur</h1>
+
+    <p>Nom de l'auteur : {{ auteur.username }}</p>
+    <img src="{{ asset(auteur.picture) }}" alt="{{ auteur.username }}" width="100">
+    <p>Email : {{ auteur.email }}</p>
+    <p>Nombre de livres : {{ auteur.nb_books }}</p>
+
+    <!-- Ajoutez d'autres informations de l'auteur selon vos besoins -->
+</body>
+</html>

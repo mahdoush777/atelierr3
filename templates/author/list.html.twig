@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des auteurs</title>
+</head>
+<body>
+    <h1>Liste des auteurs</h1>
+
+    {% if auteurs is defined and auteurs|length > 0 %}
+        <ul>
+            {% for auteur in auteurs %}
+                <li>
+                    <a href="{{ path('details_auteur', {'id': auteur.id}) }}">{{ auteur.username|upper }}</a>
+                    <br>
+                    <img src="{{ asset(auteur.picture) }}" alt="{{ auteur.username }}" width="100">
+                    <br>
+                    Email : {{ auteur.email }}
+                    <br>
+                    Nombre de livres : {{ auteur.nb_books }}
+                </li>
+            {% endfor %}
+        </ul>
+        <p>Nombre d'auteurs : {{ auteurs|length }}</p>
+        <p>Nombre total de livres de tous les auteurs : 
+            {% set totalLivres = 0 %}
+            {% for auteur in auteurs %}
+                {% set totalLivres = totalLivres + auteur.nb_books %}
+            {% endfor %}
+            {{ totalLivres }}
+        </p>
+    {% else %}
+        <p>Aucun auteur trouvé.</p>
+    {% endif %}
+</body>
+</html>
